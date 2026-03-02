@@ -43,23 +43,24 @@ public class Sight: Sense
                     if (aspect != null && aspect.affiliation == targetAffiliation)
                     {
                         Debug.Log("Enemy Detected");
+                        if (!playerDetected) onPlayerDetected?.Invoke();
                         playerDetected = true;
-                        onPlayerDetected?.Invoke();
                     }
                     else
                     {
+                        if (playerDetected) onPlayerLost?.Invoke();
                         playerDetected = false;
-                        onPlayerLost?.Invoke();
                     }
                 }
                 else
                 {
+                    if (playerDetected) onPlayerLost?.Invoke();
                     playerDetected = false;
-                    // onPlayerLost?.Invoke();
                 }
             }
             else
             {
+                if (playerDetected) onPlayerLost?.Invoke();
                 playerDetected = false;
             }
         }
@@ -87,5 +88,5 @@ public class Sight: Sense
             onPlayerLost = callback;
         }
         
-        void OnValidate() => this.ValidateRefs();
+        // void OnValidate() => this.ValidateRefs();
     }
