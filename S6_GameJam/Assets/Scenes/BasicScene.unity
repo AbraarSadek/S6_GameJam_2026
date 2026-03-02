@@ -416,6 +416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snowball
       objectReference: {fileID: 0}
+    - target: {fileID: 2994512335253107881, guid: 745c40b60693ca644b598be568e962a9, type: 3}
+      propertyPath: m_TagString
+      value: Snowball
+      objectReference: {fileID: 0}
     - target: {fileID: 5028451410534753212, guid: 745c40b60693ca644b598be568e962a9, type: 3}
       propertyPath: minImpactVelocity
       value: 0.5
