@@ -39,7 +39,7 @@ public class SnowCube : MonoBehaviour
     void Update()
     {
         // When held and inside a sensor, update the preview to nearest free snap
-        if (grab.isSelected && currentSensor != null)
+        if (grab != null && grab.isSelected && currentSensor != null)
         {
             currentSensor.ShowPreviewAt(transform.position);
         }
@@ -47,12 +47,12 @@ public class SnowCube : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Register sensor when entering
         PlacementSensor ps = other.GetComponent<PlacementSensor>();
         if (ps != null)
         {
             currentSensor = ps;
-            if (grab.isSelected)
+            Debug.Log($"SnowCube: Entered sensor {ps.name}");
+            if (grab != null && grab.isSelected)
                 currentSensor.ShowPreviewAt(transform.position);
         }
     }
@@ -62,6 +62,7 @@ public class SnowCube : MonoBehaviour
         PlacementSensor ps = other.GetComponent<PlacementSensor>();
         if (ps != null && currentSensor == ps)
         {
+            Debug.Log($"SnowCube: Exited sensor {ps.name} - clearing preview");
             currentSensor.ClearPreview();
             currentSensor = null;
         }
@@ -82,15 +83,22 @@ public class SnowCube : MonoBehaviour
 
     private void OnRelease(SelectExitEventArgs args)
     {
+        Debug.Log("SnowCube: Released");
+
         // If inside a sensor and there's a free snap nearby, snap to it
         if (currentSensor != null)
         {
             int nearestFree = currentSensor.GetNearestFreeSnapIndex(transform.position);
             if (nearestFree != -1)
             {
-                // Snap with magnet LERP
-                currentSensor.SnapCubeToPoint(this, nearestFree, magnetTime);
+                // Clear preview immediately (defensive)
                 currentSensor.ClearPreview();
+
+                // Snap with magnet LERP (PlacementSensor should handle parenting after lerp)
+                currentSensor.SnapCubeToPoint(this, nearestFree, magnetTime);
+
+                // ensure we don't hold onto a stale sensor reference
+                currentSensor = null;
                 return;
             }
         }
@@ -104,7 +112,7 @@ public class SnowCube : MonoBehaviour
         // ensure physics active for a little while
         yield return new WaitForSeconds(restCheckDelay);
 
-        // wait until very close to rest
+        // wait until very close to rest (use rb.velocity, not linearVelocity)
         while (rb != null && rb.linearVelocity.magnitude > restVelocityThreshold)
             yield return null;
 
@@ -114,6 +122,7 @@ public class SnowCube : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
             // freeze into place (becomes static)
             rb.isKinematic = true;
+            Debug.Log("SnowCube: Frozen at rest");
         }
     }
 }

@@ -29,7 +29,7 @@ public class Snowball : MonoBehaviour
 
     void OnRelease(SelectExitEventArgs args)
     {
-        rb.velocity *= throwBoost;
+        rb.linearVelocity *= throwBoost;
     }
 
     void OnCollisionEnter(Collision collision)

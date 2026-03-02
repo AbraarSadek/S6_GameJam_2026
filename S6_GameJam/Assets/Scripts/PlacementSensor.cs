@@ -14,6 +14,7 @@ public class PlacementSensor : MonoBehaviour
 
     bool[] occupied;
     Material[] originalMaterials;
+    Material[][] originalMaterialsArray;
 
     void Awake()
     {
@@ -31,10 +32,20 @@ public class PlacementSensor : MonoBehaviour
             }
         }
 
-        originalMaterials = new Material[snapPointRenderers.Length];
+        originalMaterialsArray = new Material[snapPointRenderers.Length][];
+
         for (int i = 0; i < snapPointRenderers.Length; i++)
+        {
             if (snapPointRenderers[i] != null)
-                originalMaterials[i] = snapPointRenderers[i].sharedMaterial;
+            {
+                // store the sharedMaterials array (safe, doesn't instance)
+                originalMaterialsArray[i] = snapPointRenderers[i].sharedMaterials;
+            }
+            else
+            {
+                originalMaterialsArray[i] = new Material[0];
+            }
+        }
     }
 
     /// <summary>
@@ -72,7 +83,7 @@ public class PlacementSensor : MonoBehaviour
         occupied[index] = true;
 
         // clear velocities and optionally lerp into position for magnet effect
-        cube.rb.velocity = Vector3.zero;
+        cube.rb.linearVelocity = Vector3.zero;
         cube.rb.angularVelocity = Vector3.zero;
 
         // Clear preview right away so visuals don't stick (important when the cube remains
@@ -125,7 +136,7 @@ public class PlacementSensor : MonoBehaviour
         cube.transform.position = snapT.position;
         cube.transform.rotation = snapT.rotation;
 
-        cube.rb.velocity = Vector3.zero;
+        cube.rb.linearVelocity = Vector3.zero;
         cube.rb.angularVelocity = Vector3.zero;
 
         // now parent and fix local transform/scale so it becomes (0,0,0) with localScale 1,1,1
@@ -153,8 +164,6 @@ public class PlacementSensor : MonoBehaviour
     {
         if (previewMaterial == null) return;
         int nearest = GetNearestFreeSnapIndex(position);
-
-        // if no valid snap, restore all originals
         if (nearest == -1)
         {
             ClearPreview();
@@ -166,28 +175,32 @@ public class PlacementSensor : MonoBehaviour
             if (snapPointRenderers[i] == null) continue;
             if (occupied[i])
             {
-                if (originalMaterials[i] != null) snapPointRenderers[i].material = originalMaterials[i];
+                // restore original full array
+                snapPointRenderers[i].sharedMaterials = originalMaterialsArray[i];
             }
             else
             {
-                snapPointRenderers[i].material = (i == nearest) ? previewMaterial : originalMaterials[i];
+                if (i == nearest)
+                {
+                    // show a single-slot preview (or you can insert previewMaterial into a specific slot)
+                    snapPointRenderers[i].sharedMaterials = new Material[] { previewMaterial };
+                }
+                else
+                {
+                    snapPointRenderers[i].sharedMaterials = originalMaterialsArray[i];
+                }
             }
         }
     }
 
     public void ClearPreview()
     {
-        if (snapPointRenderers == null || originalMaterials == null) return;
+        if (snapPointRenderers == null || originalMaterialsArray == null) return;
         for (int i = 0; i < snapPointRenderers.Length; i++)
         {
-            if (snapPointRenderers[i] != null)
-            {
-                // restore original if we have it, otherwise try to set to sharedMaterial to be safe
-                if (originalMaterials.Length > i && originalMaterials[i] != null)
-                    snapPointRenderers[i].material = originalMaterials[i];
-                else
-                    snapPointRenderers[i].material = snapPointRenderers[i].sharedMaterial;
-            }
+            if (snapPointRenderers[i] == null) continue;
+            // restore entire original array
+            snapPointRenderers[i].sharedMaterials = originalMaterialsArray[i];
         }
     }
 }
