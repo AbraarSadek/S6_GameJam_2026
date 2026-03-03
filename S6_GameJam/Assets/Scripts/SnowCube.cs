@@ -38,7 +38,6 @@ public class SnowCube : MonoBehaviour
 
     void Update()
     {
-        // When held and inside a sensor, update the preview to nearest free snap
         if (grab != null && grab.isSelected && currentSensor != null)
         {
             currentSensor.ShowAllPreviews();
@@ -70,49 +69,39 @@ public class SnowCube : MonoBehaviour
 
     private void OnGrab(SelectEnterEventArgs args)
     {
-        // If it was snapped, free that snap slot so player can pick it up again
         if (currentSnapIndex != -1 && currentSensor != null)
         {
             currentSensor.FreeSnap(currentSnapIndex);
             currentSnapIndex = -1;
         }
 
-        // While held, make sure physics isn't locked by being kinematic
         rb.isKinematic = false;
     }
 
     private void OnRelease(SelectExitEventArgs args)
     {
         Debug.Log("SnowCube: Released");
-
-        // If inside a sensor and there's a free snap nearby, snap to it
         if (currentSensor != null)
         {
             int nearestFree = currentSensor.GetNearestFreeSnapIndex(transform.position);
             if (nearestFree != -1)
             {
-                // Clear preview immediately (defensive)
                 currentSensor.ClearPreview();
 
-                // Snap with magnet LERP (PlacementSensor should handle parenting after lerp)
                 currentSensor.SnapCubeToPoint(this, nearestFree, magnetTime);
 
-                // ensure we don't hold onto a stale sensor reference
                 currentSensor = null;
                 return;
             }
         }
 
-        // Not snapped: allow physics and freeze when it comes to rest
         StartCoroutine(FreezeWhenRestCoroutine());
     }
 
     IEnumerator FreezeWhenRestCoroutine()
     {
-        // ensure physics active for a little while
         yield return new WaitForSeconds(restCheckDelay);
 
-        // wait until very close to rest (use rb.velocity, not linearVelocity)
         while (rb != null && rb.linearVelocity.magnitude > restVelocityThreshold)
             yield return null;
 
@@ -120,8 +109,7 @@ public class SnowCube : MonoBehaviour
         {
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            // freeze into place (becomes static)
-            rb.isKinematic = true;
+            rb.isKinematic = false;
             Debug.Log("SnowCube: Frozen at rest");
         }
     }
