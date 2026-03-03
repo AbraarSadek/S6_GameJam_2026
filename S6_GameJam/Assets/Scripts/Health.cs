@@ -3,13 +3,28 @@ using KBCore.Refs;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class Health
+public class Health : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth = 100f;
-    [SerializeField] private float _currentHealth = 100f;
-    
-    public float GetMaxHealth() => _maxHealth;
-    public float GetCurrentHealth() => _currentHealth;
+    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float currentHealth = 100f;
+
+    public Health()
+    {
+    }
+    public Health(float maxHealth)
+    {
+        this.maxHealth = maxHealth;
+        currentHealth = maxHealth;
+    }
+
+    public Health(float maxHealth, float currentHealth)
+    {
+        this.maxHealth = maxHealth;
+        this.currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+    }
+
+    public float GetMaxHealth() => maxHealth;
+    public float GetCurrentHealth() => currentHealth;
     
     // Callbacks
     private Action<float> _onDamageTaken;
@@ -18,8 +33,8 @@ public class Health
     
     public void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
-        if (_currentHealth <= 0)
+        currentHealth -= damage;
+        if (currentHealth <= 0)
         {
             _onDeath?.Invoke(damage);
         }
@@ -31,19 +46,19 @@ public class Health
     
     public void Heal(float amount)
     {
-        _currentHealth += amount;
-        if (_currentHealth > _maxHealth) _currentHealth = _maxHealth;
+        currentHealth += amount;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
         _onHealed?.Invoke(amount);
     }
     
     public void SetHealth(float health)
     {
-        _currentHealth = Mathf.Clamp(health, 0, _maxHealth);
+        currentHealth = Mathf.Clamp(health, 0, maxHealth);
     }
     public void SetHealth(float health, float maxHealth)
     {
-        this._maxHealth = maxHealth;
-        _currentHealth = Mathf.Clamp(health, 0, maxHealth);
+        this.maxHealth = maxHealth;
+        currentHealth = Mathf.Clamp(health, 0, maxHealth);
     }
     
     
