@@ -15,12 +15,14 @@ public abstract class AIControllerBase : MonoBehaviour
 
     [SerializeField, Self] protected Health health;
     [SerializeField] protected float speed = 3.5f;
+    [SerializeField] private float _attackDamage = 20f;
     
     
     private Vector3 _targetDestination;
     private bool playerTargeted = false;
     private bool beenAtTarget;
     [SerializeField] protected GameObject baseTarget;
+    [SerializeField] private float targetOffsetRadius = 0.5f; // Distance before considered "at target"
     
     // Attack hitbox
     [SerializeField] protected Collider attackHitbox;
@@ -38,11 +40,15 @@ public abstract class AIControllerBase : MonoBehaviour
     [SerializeField] private float _killDuration = 3f;
     
     private Timer _timer;
+    
+    // Attack callback
+    protected Action onAttackHit;
 
     protected bool atTarget()
     {
 
-        return Vector3.Distance(transform.position, _targetDestination) < agent.stoppingDistance;
+        // return Vector3.Distance(transform.position, _targetDestination) < agent.stoppingDistance + targetOffsetRadius;
+        return agent.remainingDistance <= agent.stoppingDistance + targetOffsetRadius;
     }
 
     private void InitStates()
@@ -73,7 +79,6 @@ public abstract class AIControllerBase : MonoBehaviour
         {
             playerTargeted = true;
         }
-        agent.stoppingDistance = 1f;
     }
     
     private void TargetPlayer()
@@ -105,21 +110,27 @@ public abstract class AIControllerBase : MonoBehaviour
         // State Handlers
         // Spawning state will allow execution of spawn animation, hold the AI in place then transition to marching
         _timer = new Timer(_spawnDuration, () => StateMachine.TransitionTo(marchingState));
-        spawningState.OnEnter = () => agent.speed = 0;
-        spawningState.OnExit = () => agent.speed = speed;
-        spawningState.OnFrame = () => _timer.Update(Time.deltaTime);
+        spawningState.OnEnter += () => agent.speed = 0;
+        spawningState.OnExit += () => agent.speed = speed;
+        spawningState.OnFrame += () => _timer.Update(Time.deltaTime);
         
         // Marching state will march towards the player base unless a player or object is targeted.
-        marchingState.OnEnter = () => ChangeTarget(baseTarget.transform.position);
-        marchingState.AtDestination = () => StateMachine.TransitionTo(attackingState);
+        marchingState.OnEnter += () => ChangeTarget(baseTarget.transform.position);
+        marchingState.AtDestination += () =>
+        {
+            // Look direction of base
+            float yAngle = baseTarget.transform.rotation.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0, yAngle, 0);
+            StateMachine.TransitionTo(attackingState);
+        };
         
         // Target state will continue to target the player until they are lost, then transition to searching
-        targetState.OnEnter = () => TargetPlayer();
-        targetState.OnFrame = () => TargetPlayer();
-        targetState.AtDestination = () => StateMachine.TransitionTo(attackingState);
+        targetState.OnEnter += () => TargetPlayer();
+        targetState.OnFrame += () => TargetPlayer();
+        targetState.AtDestination += () => StateMachine.TransitionTo(attackingState);
         
         // Searching state will continue to the last known location of the player, if the player is not found then it will transition back to marching
-        searchingState.OnEnter = () =>
+        searchingState.OnEnter += () =>
         {
             if (beenAtTarget)
             {
@@ -139,8 +150,8 @@ public abstract class AIControllerBase : MonoBehaviour
                 });
             }
         };
-        searchingState.OnExit = () => agent.speed = speed;
-        searchingState.OnFrame = () =>
+        searchingState.OnExit += () => agent.speed = speed;
+        searchingState.OnFrame += () =>
         {
             _timer.Update(Time.deltaTime);
 
@@ -150,7 +161,7 @@ public abstract class AIControllerBase : MonoBehaviour
                 transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
             }
         };
-        searchingState.AtDestination = () =>
+        searchingState.AtDestination += () =>
         {
             agent.speed = 0;
             // Spin around looking for player for a few seconds, if not found transition back to marching
@@ -162,7 +173,7 @@ public abstract class AIControllerBase : MonoBehaviour
         
         
         // Attacking state will stop the AI and play attack animation, then transition back to marching or target depending on if the player is still targeted
-        attackingState.OnEnter = () =>
+        attackingState.OnEnter += () =>
         {
             agent.speed = 0;
             Debug.Log("Attacking");
@@ -172,6 +183,7 @@ public abstract class AIControllerBase : MonoBehaviour
                 
                 // Using the hitbox, find all colliders in the area and apply damage to the player or base if they are hit
                 Collider[] hitColliders = Physics.OverlapBox(attackHitbox.bounds.center, attackHitbox.bounds.extents, attackHitbox.transform.rotation);
+                onAttackHit?.Invoke();
                 foreach (var hitCollider in hitColliders)
                 {
                     if (hitCollider.gameObject == gameObject) continue; // Don't hit self
@@ -179,7 +191,7 @@ public abstract class AIControllerBase : MonoBehaviour
                     if (otherHealth != null)
                     {
                         Debug.Log($"Dealt damage to {hitCollider.gameObject.name}");
-                        otherHealth.TakeDamage(20f); // Example damage value
+                        otherHealth.TakeDamage(_attackDamage); // Example damage value
                     }
                 }
 
@@ -199,17 +211,17 @@ public abstract class AIControllerBase : MonoBehaviour
 
             //TODO: Add attack animation
         };
-        attackingState.OnFrame = () => _timer.Update(Time.deltaTime);
-        attackingState.OnExit = () => agent.speed = speed;
+        attackingState.OnFrame += () => _timer.Update(Time.deltaTime);
+        attackingState.OnExit += () => agent.speed = speed;
 
-        killedState.OnEnter = () =>
+        killedState.OnEnter += () =>
         {
             agent.speed = 0;
             Debug.Log("Killed");
 
             _timer = new Timer(_killDuration, () => Destroy(gameObject));
         };
-        killedState.OnFrame = () => _timer.Update(Time.deltaTime);
+        killedState.OnFrame += () => _timer.Update(Time.deltaTime);
     }
 
     void OnValidate() => this.ValidateRefs();
