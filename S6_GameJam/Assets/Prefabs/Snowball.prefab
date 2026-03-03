@@ -4991,7 +4991,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Snowball
   impactEffect: {fileID: 2728480178788381888}
-  minImpactVelocity: 0.5
+  minImpactVelocity: 5
+  throwBoost: 3.5
+  inHand: 0
 --- !u!114 &104305884166526188
 MonoBehaviour:
   m_ObjectHideFlags: 0
