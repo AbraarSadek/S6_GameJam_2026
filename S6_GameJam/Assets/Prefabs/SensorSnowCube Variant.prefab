@@ -20,25 +20,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: SensorSnowCube Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5727834996652501380, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+      propertyPath: m_TagString
+      value: SnowPileSensor
+      objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.352715
+      value: 1.3527151
       objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6070456
+      value: 0.60704565
       objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.023
+      value: 3.6328344
       objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2581
+      value: 1.666
       objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.739
+      value: 19.009998
       objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalRotation.w
@@ -71,6 +75,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2918043750243226173, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
     - {fileID: 8189335423078756228, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+    - {fileID: 1455572186868823655, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+    - {fileID: 2918043750243226173, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+    - {fileID: 8189335423078756228, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+    - {fileID: 6098496959744024221, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+    - {fileID: 1460118897141464913, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

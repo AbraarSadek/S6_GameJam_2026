@@ -166,7 +166,30 @@ public class PlacementSensor : MonoBehaviour
             }
         }
     }
+    public void ShowAllPreviews()
+    {
+        if (previewMaterial == null || snapPointRenderers == null || originalMaterialsArray == null) return;
 
+        for (int i = 0; i < snapPointRenderers.Length; i++)
+        {
+            var r = snapPointRenderers[i];
+            if (r == null)
+            {
+                if (i < originalMaterialsArray.Length)
+                    r.sharedMaterials = originalMaterialsArray[i];
+                continue;
+            }
+
+            if (i < occupied.Length && occupied[i])
+            {
+                r.sharedMaterials = originalMaterialsArray[i];
+            }
+            else
+            {
+                r.sharedMaterials = new Material[] { previewMaterial };
+            }
+        }
+    }
     public void ClearPreview()
     {
         if (snapPointRenderers == null || originalMaterialsArray == null) return;
