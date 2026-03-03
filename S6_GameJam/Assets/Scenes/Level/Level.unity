@@ -1993,6 +1993,70 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &1654402822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1654402824}
+  - component: {fileID: 1654402823}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1654402823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654402822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d356572ab4e5c8b41a8873aa51748fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveManager
+  totalWaves: 3
+  baseMobsPerWave: 5
+  mobsIncreasePerWave: 3
+  timeBetweenSpawns: 0.5
+  breakTime: 10
+  mobPrefabs:
+  - {fileID: 7884322475928018584, guid: 971176689341fcd4993bf56d5ff19b3a, type: 3}
+  - {fileID: 6581788443509545163, guid: 520efb6f5c877b54490042ca796fec08, type: 3}
+  spawnPoints:
+  - {fileID: 910893304}
+  - {fileID: 2054909738}
+  - {fileID: 1283801517}
+  - {fileID: 1110982575}
+  - {fileID: 576574510}
+  - {fileID: 791883627}
+  - {fileID: 1948210577}
+  - {fileID: 1666218659}
+  - {fileID: 1586134333}
+  - {fileID: 501793771}
+  timerText: {fileID: 731292923}
+--- !u!4 &1654402824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654402822}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.10949, y: 2.78298, z: -16.73831}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1666218658
 GameObject:
   m_ObjectHideFlags: 0
@@ -7934,3 +7998,4 @@ SceneRoots:
   - {fileID: 8500216564598925997}
   - {fileID: 1905741601}
   - {fileID: 952492964}
+  - {fileID: 1654402824}
