@@ -49,12 +49,18 @@ public class StateMachine
         currentState = state;
         currentState.OnEnter?.Invoke();
     }
+    
+    public void InvokeAtDestination()
+    {
+        if (currentState != null && currentState.AtDestination != null) currentState.AtDestination();
+    }
 
     public class State
     {
         public string name;
         public Action OnEnter;
         public Func<State, bool> TestTransition;
+        public Action AtDestination;
         public Action OnExit;
         public Action OnFrame;
 

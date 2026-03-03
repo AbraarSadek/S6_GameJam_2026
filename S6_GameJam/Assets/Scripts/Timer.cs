@@ -45,6 +45,9 @@ public class Timer
     private float _elapsedTime;
     private Action _callback;
     
+    
+    private float _debugElapsedTime;
+    
     public Timer(float duration, Action callback)
     {
         _duration = duration;
@@ -55,10 +58,17 @@ public class Timer
     public bool Update(float deltaTime)
     {
         _elapsedTime += deltaTime;
-        Debug.Log("Timer Update: " + _elapsedTime + " / " + _duration);
+        _debugElapsedTime += deltaTime;
+        
+        if (_debugElapsedTime >= 1.0f)
+        {
+            Debug.Log("Timer Update: " + _elapsedTime + " / " + _duration);
+            _debugElapsedTime = 0.0f;
+        }
         
         if (_elapsedTime >= _duration)
         {
+            Debug.Log("Timer Update: " + _elapsedTime + " / " + _duration);
             _callback?.Invoke();
             return true;
         }

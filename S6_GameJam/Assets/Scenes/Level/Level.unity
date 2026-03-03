@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 40450958}
   - component: {fileID: 40450957}
   - component: {fileID: 40450961}
+  - component: {fileID: 40450962}
   m_Layer: 0
   m_Name: Capsule (1)
   m_TagString: Player
@@ -246,6 +247,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Aspect
   affiliation: 0
+--- !u!114 &40450962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40450956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76358c1c81f482096dd89a691a38053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
+  currentHealth: 100
 --- !u!1 &275426892
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +485,59 @@ Transform:
   - {fileID: 8259180295801745129}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &405273681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 405273683}
+  - component: {fileID: 405273682}
+  m_Layer: 2
+  m_Name: AttackHitBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &405273682
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405273681}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.8936043, z: 0.5433521}
+  m_Center: {x: 0, y: -0.020673275, z: -0.22832394}
+--- !u!4 &405273683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405273681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1259860784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &542328204
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +690,7 @@ GameObject:
   - component: {fileID: 1259860780}
   - component: {fileID: 1259860786}
   - component: {fileID: 1259860785}
+  - component: {fileID: 1259860787}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -742,7 +811,8 @@ Transform:
   m_LocalPosition: {x: 2.47162, y: 5.16, z: 8.99582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 405273683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1259860785
@@ -759,9 +829,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skeleton
   sight: {fileID: 1259860786}
   agent: {fileID: 1259860780}
-  health: 1
+  health: {fileID: 1259860787}
   speed: 1
   baseTarget: {fileID: 275426892}
+  attackHitbox: {fileID: 405273682}
   _spawnDuration: 2
   _attackDuration: 0.8
   _killDuration: 3
@@ -783,6 +854,20 @@ MonoBehaviour:
   FieldOfView: 45
   ViewDistance: 100
   playerDetected: 0
+--- !u!114 &1259860787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259860779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76358c1c81f482096dd89a691a38053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 1
+  currentHealth: 1
 --- !u!1 &1815432519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,6 +1610,7 @@ GameObject:
   - component: {fileID: 7838947614152017843}
   - component: {fileID: 2087029025004454220}
   - component: {fileID: 7838947614152017844}
+  - component: {fileID: 7838947614152017845}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -4834,6 +4920,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.5901136, y: 6.1992083, z: 6.3859167}
   m_Center: {x: -0.010108113, y: 2.8102183, z: -0.3745166}
+--- !u!114 &7838947614152017845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602928612658263197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76358c1c81f482096dd89a691a38053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 100
+  currentHealth: 100
 --- !u!4 &8034212705223610789
 Transform:
   m_ObjectHideFlags: 0
