@@ -107,7 +107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571042049591659991, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       propertyPath: m_Name
-      value: Skeleton Variant
+      value: Skeleton
       objectReference: {fileID: 0}
     - target: {fileID: 1576138468227602216, guid: 61b3e3801d56a3f429556c96ea2f07d6, type: 3}
       propertyPath: m_Layer
@@ -538,7 +538,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
