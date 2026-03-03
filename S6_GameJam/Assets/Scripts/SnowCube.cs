@@ -41,7 +41,7 @@ public class SnowCube : MonoBehaviour
         // When held and inside a sensor, update the preview to nearest free snap
         if (grab != null && grab.isSelected && currentSensor != null)
         {
-            currentSensor.ShowPreviewAt(transform.position);
+            currentSensor.ShowAllPreviews();
         }
     }
 
@@ -53,7 +53,7 @@ public class SnowCube : MonoBehaviour
             currentSensor = ps;
             Debug.Log($"SnowCube: Entered sensor {ps.name}");
             if (grab != null && grab.isSelected)
-                currentSensor.ShowPreviewAt(transform.position);
+                currentSensor.ShowAllPreviews();
         }
     }
 
