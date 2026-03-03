@@ -48,22 +48,16 @@ public class Snowball : MonoBehaviour
         {
             return;
         }
-        
-        Health otherHealth = collision.gameObject.GetComponent<Health>();
-        if (otherHealth != null)
-        {
-            otherHealth.TakeDamage(1f);
-        }
+  
         
         if (rb.linearVelocity.magnitude >= minImpactVelocity)
         {
             ContactPoint contact = collision.contacts[0];
             Instantiate(impactEffect, contact.point, Quaternion.LookRotation(contact.normal));
-
-            Health collidedWith = collision.gameObject.GetComponent<Health>();
-            if (collidedWith != null)
+            Health otherHealth = collision.gameObject.GetComponent<Health>();
+            if (otherHealth != null)
             {
-                collidedWith.TakeDamage(67);
+                otherHealth.TakeDamage(1f);
             }
             Destroy(gameObject);
         }
