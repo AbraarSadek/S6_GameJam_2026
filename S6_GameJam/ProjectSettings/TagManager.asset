@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Anchor
+  - Base
   - snowpile
+  - snowblocks
+  - snowspawn
   layers:
   - Default
   - TransparentFX
