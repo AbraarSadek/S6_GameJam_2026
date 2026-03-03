@@ -228,10 +228,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snowball
       objectReference: {fileID: 0}
-    - target: {fileID: 5028451410534753212, guid: 745c40b60693ca644b598be568e962a9, type: 3}
-      propertyPath: minImpactVelocity
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -610,70 +606,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8398938651492696419, guid: 0f41d4a3d768e57468f912a5d5fbd6f5, type: 3}
   m_PrefabInstance: {fileID: 3516279515292004979}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &389223477
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4382701994953542556, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_Name
-      value: SnowBallsSpawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.71298134
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.701183
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 89.044
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405764712614276581, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7894070623537690463, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      propertyPath: m_Name
-      value: SnowBallMaker
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2534447286215266702, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1834476903}
-  m_SourcePrefab: {fileID: 100100000, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
 --- !u!1 &503323987
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +716,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Device Simulator
       objectReference: {fileID: 0}
+    - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -851,11 +787,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 745c40b60693ca644b598be568e962a9, type: 3}
---- !u!4 &1189973830 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1313431055132647650, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-  m_PrefabInstance: {fileID: 389223477}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1288389178
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1038,26 +969,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1680501587, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
   m_PrefabInstance: {fileID: 1288389178}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1834476901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2534447286215266702, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
-  m_PrefabInstance: {fileID: 389223477}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1834476903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834476901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354b5c59348cd724a91b9a9ca7a00d7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlaceSnowBalls
-  spawnSnowBall: {fileID: 810157038}
-  spawnSnow: {fileID: 1189973830}
-  amount: 10
 --- !u!1 &1943603927
 GameObject:
   m_ObjectHideFlags: 0
@@ -4477,6 +4388,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowWallMaker
       objectReference: {fileID: 0}
+    - target: {fileID: 7937910133242465195, guid: df27cd77f8dedb843a3639abf28f0e2e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d654c78311f975f44bf89e9b43cabc91, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4762,6 +4677,71 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &7147204409225571244
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 94370612992808865, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_Name
+      value: SnowBallMaker
+      objectReference: {fileID: 0}
+    - target: {fileID: 210268195654167381, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 2edc9181c1a8b09428b8ba89940f6ec5, type: 2}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71298134
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.701183
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.044
+      objectReference: {fileID: 0}
+    - target: {fileID: 721865933976259867, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 971285824268419229, guid: 5168881179fa12140989be49b5554efb, type: 3}
+      propertyPath: spawnSnowBall
+      value: 
+      objectReference: {fileID: 810157038}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5168881179fa12140989be49b5554efb, type: 3}
 --- !u!33 &7337109810112096624
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6537,4 +6517,4 @@ SceneRoots:
   - {fileID: 179352679}
   - {fileID: 749045509}
   - {fileID: 6687482295772573968}
-  - {fileID: 389223477}
+  - {fileID: 7147204409225571244}

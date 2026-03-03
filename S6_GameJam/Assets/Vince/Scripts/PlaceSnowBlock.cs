@@ -29,7 +29,7 @@ public class PlaceSnowBlock : MonoBehaviour
         for(int i = 0; i < amount; i++) {
             Vector3 randomOffset = new Vector3(Random.Range(-1f, 1f),0,Random.Range(-1f, 1f));
 
-            GameObject snowBlock = Instantiate(spawnSnowWall, spawnSnow.position + randomOffset, spawnSnow.rotation);
+            Instantiate(spawnSnowWall, spawnSnow.position + randomOffset, spawnSnow.rotation);
         }
     }
 
