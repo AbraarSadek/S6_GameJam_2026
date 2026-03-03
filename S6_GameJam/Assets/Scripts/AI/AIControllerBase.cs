@@ -222,6 +222,7 @@ public abstract class AIControllerBase : MonoBehaviour
         {
             agent.speed = 0;
             Debug.Log("Killed");
+            GetComponent<MobDeath>().Die();
 
             _timer = new Timer(_killDuration, () => Destroy(gameObject));
         };
