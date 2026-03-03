@@ -56,8 +56,8 @@ public class Snowball : MonoBehaviour
             Health collidedWith = collision.gameObject.GetComponent<Health>();
             if (collidedWith != null)
             {
-                collidedWith.TakeDamage(67);
-            }
+                collidedWith.TakeDamage(67); 
+            
             Destroy(gameObject);
         }
     }
