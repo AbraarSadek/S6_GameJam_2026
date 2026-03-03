@@ -38,7 +38,7 @@ public class PlacementSensor : MonoBehaviour
                 originalMaterialsArray[i] = new Material[0];
             }
         }
-    }>
+    }
     public int GetNearestFreeSnapIndex(Vector3 position)
     {
         int best = -1;
