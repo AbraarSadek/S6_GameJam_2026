@@ -15,7 +15,7 @@ public class SnowCube : MonoBehaviour
     public float restCheckDelay = 0.1f;
 
     [Header("Magnet")]
-    public float magnetTime = 0.12f; // how fast the snap lerp is (0 = instant)
+    public float magnetTime = 0f; 
 
     XRGrabInteractable grab;
 

@@ -141,7 +141,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   restVelocityThreshold: 0.05
   restCheckDelay: 0.1
-  magnetTime: 0
+  magnetTime: 0.12
 --- !u!1001 &31895035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,7 +385,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   restVelocityThreshold: 0.05
   restCheckDelay: 0.1
-  magnetTime: 0
+  magnetTime: 0.12
 --- !u!1001 &441087506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   restVelocityThreshold: 0.05
   restCheckDelay: 0.1
-  magnetTime: 0
+  magnetTime: 0.12
 --- !u!1001 &1244199808
 PrefabInstance:
   m_ObjectHideFlags: 0
