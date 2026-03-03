@@ -37,7 +37,7 @@ public class Sight: Sense
             rayDirection = playerTransform.position - transform.position;
             if (Vector3.Angle(rayDirection, transform.forward) < FieldOfView)
             {
-                if (Physics.Raycast(transform.position, rayDirection, out hit, ViewDistance))
+                if (Physics.Raycast(transform.position, rayDirection, out hit, ViewDistance, ~LayerMask.GetMask("Ignore Raycast")))
                 {
                     Aspect aspect = hit.collider.GetComponent<Aspect>();
                     if (aspect != null && aspect.affiliation == targetAffiliation)
