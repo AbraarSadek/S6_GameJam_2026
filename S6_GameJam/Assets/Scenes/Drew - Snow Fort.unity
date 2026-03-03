@@ -119,29 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &12117836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5727834996652501380, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
-  m_PrefabInstance: {fileID: 1623924987097592800}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &12117843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12117836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd95869113ab20c4c8a00579d53fc54c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SnowCube
-  currentSensor: {fileID: 0}
-  currentSnapIndex: -1
-  rb: {fileID: 0}
-  restVelocityThreshold: 0.05
-  restCheckDelay: 0.1
-  magnetTime: 0
 --- !u!1001 &31895035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -786,78 +763,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
---- !u!1 &959475559
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 959475561}
-  - component: {fileID: 959475560}
-  - component: {fileID: 959475562}
-  m_Layer: 0
-  m_Name: SnowFortSensor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &959475560
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959475559}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 12.991364, y: 1, z: 1.3513254}
-  m_Center: {x: 5.995682, y: 0, z: 0.1756627}
---- !u!4 &959475561
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959475559}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 0.46611, z: -2.13588}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &959475562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959475559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38c10dd3207feb84c8926b16e03d1ca3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlacementSensor
-  snapPoints:
-  - {fileID: 1849300900}
-  - {fileID: 596907644}
-  - {fileID: 1301695004}
-  snapPointRenderers: []
-  previewMaterial: {fileID: 2100000, guid: adf6aa4c2c81a784eaaeb80b01e126e2, type: 2}
 --- !u!1001 &967332883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1803,9 +1708,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7839552298077626174, guid: 677d108ecf82e31449b2bf953f84f238, type: 3}
-    - {fileID: 3824412872543937159, guid: 677d108ecf82e31449b2bf953f84f238, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1922,11 +1825,77 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5727834996652501380, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 12117843}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+--- !u!1001 &2233038667410713491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5302824195356659512, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: 'snapPoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1849300900}
+    - target: {fileID: 5302824195356659512, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: 'snapPoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 596907644}
+    - target: {fileID: 5302824195356659512, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: 'snapPoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1301695004}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46611
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.13588
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725772699477336104, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287613408761444527, guid: 72841befae42f71479e601c14e155d58, type: 3}
+      propertyPath: m_Name
+      value: SnowFortSensor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72841befae42f71479e601c14e155d58, type: 3}
 --- !u!1001 &6325229453843767839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2018,6 +1987,6 @@ SceneRoots:
   - {fileID: 1259736366}
   - {fileID: 2127676082}
   - {fileID: 1517444185}
-  - {fileID: 959475561}
+  - {fileID: 2233038667410713491}
   - {fileID: 309063936}
   - {fileID: 901177553}

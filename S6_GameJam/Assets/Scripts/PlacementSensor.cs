@@ -13,32 +13,39 @@ public class PlacementSensor : MonoBehaviour
 
     void Awake()
     {
-        if (snapPoints == null) snapPoints = new Transform[0];
+        GameObject[] piles = GameObject.FindGameObjectsWithTag("SnowPileSensor");
+        snapPoints = new Transform[piles.Length];
+        for (int i = 0; i < piles.Length; i++)
+            snapPoints[i] = piles[i].transform;
+
         occupied = new bool[snapPoints.Length];
+
         if (snapPointRenderers == null || snapPointRenderers.Length != snapPoints.Length)
-        {
             snapPointRenderers = new Renderer[snapPoints.Length];
-            for (int i = 0; i < snapPoints.Length; i++)
-            {
-                if (snapPoints[i] != null)
-                    snapPointRenderers[i] = snapPoints[i].GetComponentInChildren<Renderer>();
-            }
+
+        for (int i = 0; i < snapPoints.Length; i++)
+        {
+            if (snapPoints[i] != null && snapPointRenderers[i] == null)
+                snapPointRenderers[i] = snapPoints[i].GetComponentInChildren<Renderer>();
         }
 
         originalMaterialsArray = new Material[snapPointRenderers.Length][];
-
+        originalMaterials = new Material[snapPointRenderers.Length];
         for (int i = 0; i < snapPointRenderers.Length; i++)
         {
             if (snapPointRenderers[i] != null)
             {
                 originalMaterialsArray[i] = snapPointRenderers[i].sharedMaterials;
+                originalMaterials[i] = originalMaterialsArray[i].Length > 0 ? originalMaterialsArray[i][0] : null;
             }
             else
             {
                 originalMaterialsArray[i] = new Material[0];
+                originalMaterials[i] = null;
             }
         }
     }
+
     public int GetNearestFreeSnapIndex(Vector3 position)
     {
         int best = -1;

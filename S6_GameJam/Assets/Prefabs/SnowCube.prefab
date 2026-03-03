@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1460118897141464913}
   - component: {fileID: 8189335423078756228}
   - component: {fileID: 2918043750243226173}
+  - component: {fileID: 1455572186868823655}
   m_Layer: 0
   m_Name: SnowCube
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5727834996652501380}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.006751109, z: -0, w: 0.99997723}
+  m_LocalRotation: {x: 0, y: 0.00675437, z: 0, w: 0.99997723}
   m_LocalPosition: {x: 1.1459999, y: 0.2581, z: -2.441}
   m_LocalScale: {x: 1.3527149, y: 0.44817495, z: 0.60704553}
   m_ConstrainProportionsScale: 0
@@ -269,3 +270,21 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &1455572186868823655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5727834996652501380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd95869113ab20c4c8a00579d53fc54c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnowCube
+  currentSensor: {fileID: 0}
+  currentSnapIndex: -1
+  rb: {fileID: 0}
+  restVelocityThreshold: 0.05
+  restCheckDelay: 0.1
+  magnetTime: 0

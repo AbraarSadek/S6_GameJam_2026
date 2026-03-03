@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1430028884601896416, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1430028884601896416, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: adf6aa4c2c81a784eaaeb80b01e126e2, type: 2}
@@ -17,8 +21,16 @@ PrefabInstance:
       value: SensorSnowCube Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.352715
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6070456
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.101
+      value: 6.023
       objectReference: {fileID: 0}
     - target: {fileID: 6875262497339192558, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
       propertyPath: m_LocalPosition.y
@@ -56,7 +68,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2918043750243226173, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
+    - {fileID: 8189335423078756228, guid: 442e2b6fa5171d04aa6509bfe1ade441, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
