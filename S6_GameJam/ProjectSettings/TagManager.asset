@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Anchor
   - Base
+  - snowpile
+  - snowblocks
+  - snowspawn
   layers:
   - Default
   - TransparentFX
