@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -51,6 +52,12 @@ public class Snowball : MonoBehaviour
         {
             ContactPoint contact = collision.contacts[0];
             Instantiate(impactEffect, contact.point, Quaternion.LookRotation(contact.normal));
+
+            Health collidedWith = collision.gameObject.GetComponent<Health>();
+            if (collidedWith != null)
+            {
+                collidedWith.TakeDamage(67); 
+            
             Destroy(gameObject);
         }
     }
