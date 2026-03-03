@@ -10,6 +10,7 @@ TagManager:
   - snowblocks
   - snowspawn
   - SnowPileSensor
+  - shovel
   layers:
   - Default
   - TransparentFX
