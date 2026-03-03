@@ -3,22 +3,20 @@ using KBCore.Refs;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class Health : MonoBehaviour
-{
+public class Health : MonoBehaviour {
+
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float currentHealth = 100f;
 
-    public Health()
-    {
+    public Health() {
     }
-    public Health(float maxHealth)
-    {
+
+    public Health(float maxHealth) {
         this.maxHealth = maxHealth;
         currentHealth = maxHealth;
     }
 
-    public Health(float maxHealth, float currentHealth)
-    {
+    public Health(float maxHealth, float currentHealth) {
         this.maxHealth = maxHealth;
         this.currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
     }
