@@ -9,6 +9,7 @@ TagManager:
   - snowpile
   - snowblocks
   - snowspawn
+  - shovel
   layers:
   - Default
   - TransparentFX
