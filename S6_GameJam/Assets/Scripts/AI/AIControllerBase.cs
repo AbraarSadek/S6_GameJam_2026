@@ -182,16 +182,20 @@ public abstract class AIControllerBase : MonoBehaviour
                 if (StateMachine.currentState != attackingState) return;
                 
                 // Using the hitbox, find all colliders in the area and apply damage to the player or base if they are hit
-                Collider[] hitColliders = Physics.OverlapBox(attackHitbox.bounds.center, attackHitbox.bounds.extents, attackHitbox.transform.rotation);
                 onAttackHit?.Invoke();
-                foreach (var hitCollider in hitColliders)
+                if (attackHitbox != null)
                 {
-                    if (hitCollider.gameObject == gameObject) continue; // Don't hit self
-                    Health otherHealth = hitCollider.GetComponent<Health>();
-                    if (otherHealth != null)
+                    Collider[] hitColliders = Physics.OverlapBox(attackHitbox.bounds.center,
+                                    attackHitbox.bounds.extents, attackHitbox.transform.rotation);
+                    foreach (var hitCollider in hitColliders)
                     {
-                        Debug.Log($"Dealt damage to {hitCollider.gameObject.name}");
-                        otherHealth.TakeDamage(_attackDamage); // Example damage value
+                        if (hitCollider.gameObject == gameObject) continue; // Don't hit self
+                        Health otherHealth = hitCollider.GetComponent<Health>();
+                        if (otherHealth != null)
+                        {
+                            Debug.Log($"Dealt damage to {hitCollider.gameObject.name}");
+                            otherHealth.TakeDamage(_attackDamage); // Example damage value
+                        }
                     }
                 }
 
