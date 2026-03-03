@@ -47,6 +47,13 @@ public class Snowball : MonoBehaviour
         {
             return;
         }
+        
+        Health otherHealth = collision.gameObject.GetComponent<Health>();
+        if (otherHealth != null)
+        {
+            otherHealth.TakeDamage(1f);
+        }
+        
         if (rb.linearVelocity.magnitude >= minImpactVelocity)
         {
             ContactPoint contact = collision.contacts[0];
